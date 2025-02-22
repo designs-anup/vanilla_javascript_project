@@ -1,15 +1,30 @@
-const colors = ["red","green","blue","pink","olive","yellow"]
+const animal = ["dog","elephant","fox","horse","owl"]
+const hexColor = ["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"]
 
 const btn = document.getElementById('btn')
+const btnHex = document.getElementById('btnHex')
 const color = document.querySelector('.colorPan')
 
 btn.addEventListener('click', function(){
-    let randomColor = pickRandomColor()
-    // console.log(randomColor);    
-    color.textContent = colors[randomColor]
-    document.body.style.backgroundColor = colors[randomColor]
+    let randomBg = pickRandomBg(animal)
+
+    color.textContent = animal[randomBg]
+    document.body.style.background = "url(../../img/"+animal[randomBg]+".jpg)"
 })
 
-function pickRandomColor(){
-    return Math.floor(Math.random() * colors.length)
+btnHex.addEventListener('click', function(){
+    let hex = "#"
+    
+    for(let i = 0; i < 6; i++){
+        // console.log("i value :", i);
+        hex += hexColor[pickRandomBg(hexColor)]
+    }
+
+    // console.log("hex : ", hex);
+    color.textContent = hex
+    document.body.style.background = hex
+})
+
+function pickRandomBg(item){
+    return Math.floor(Math.random() * item.length)
 }
