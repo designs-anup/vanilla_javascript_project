@@ -38,6 +38,7 @@ const jobDescription = document.querySelector('.jobInfo')
 
 // select buttons
 const btns = document.querySelectorAll('.btn')
+const btnRandom = document.querySelector('.btnRandom')
 
 let count = 0
 
@@ -82,4 +83,10 @@ btns.forEach(function(btn){
         }
     })
 
+})
+
+btnRandom.addEventListener('click', function(){
+    count = Math.floor(Math.random() * reviews.length)
+    // console.log("random reviews", count);
+    createReviewCard(count)
 })
