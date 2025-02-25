@@ -36,7 +36,10 @@ const author = document.querySelector('.author')
 const jobProfile = document.querySelector('.job')
 const jobDescription = document.querySelector('.jobInfo')
 
-let count = 3
+// select buttons
+const btns = document.querySelectorAll('.btn')
+
+let count = 0
 
 window.addEventListener('DOMContentLoaded', function(){
     console.log("content loaded", reviews);
@@ -51,3 +54,32 @@ function createReviewCard(item){
     jobProfile.textContent = currentReview.job
     jobDescription.textContent = currentReview.text
 }
+
+btns.forEach(function(btn){
+    // console.log(btn);
+    btn.addEventListener('click', function(e){
+        // console.log('button clicked', e.target.classList);
+        let selectBtnStyle = e.target.classList
+
+        if(selectBtnStyle.contains('prev')){
+            count -= 1
+            // console.log("Previous button count is : " , count);
+            if(count < 0){
+            //    console.log("prev count : ", count);
+               count = reviews.length -1 
+            }
+            createReviewCard(count)
+        }
+
+        if(selectBtnStyle.contains('next')){
+            // console.log("Next button count is : ", count);
+            count += 1
+            if(count > (reviews.length - 1)){
+                console.log("next count : ", count);
+                count = 0     
+            }
+            createReviewCard(count)
+        }
+    })
+
+})
