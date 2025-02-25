@@ -43,7 +43,7 @@ const btnRandom = document.querySelector('.btnRandom')
 let count = 0
 
 window.addEventListener('DOMContentLoaded', function(){
-    console.log("content loaded", reviews);
+    // console.log("content loaded", reviews);
     createReviewCard(count)
 })
 
@@ -76,7 +76,7 @@ btns.forEach(function(btn){
             // console.log("Next button count is : ", count);
             count += 1
             if(count > (reviews.length - 1)){
-                console.log("next count : ", count);
+                // console.log("next count : ", count);
                 count = 0     
             }
             createReviewCard(count)
