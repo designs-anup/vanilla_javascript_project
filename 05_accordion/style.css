@@ -5,6 +5,76 @@
 }
 
 body{
-    background-color: #000;
+    background-color: #ade7f7;
     color: #fff;
+}
+
+.container{
+    width: 90vw;
+    margin: 0 auto;
+}
+
+h1{
+    color: #c59d5f;
+    padding: 1rem 0; 
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.question {
+    background: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem 1.5rem 0 1.5rem;
+    margin-bottom: 2rem;
+}
+.question-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: capitalize;
+    padding-bottom: 1rem;
+}
+.question-title p {
+    margin-bottom: 0;
+    letter-spacing: 0.25rem;
+    color: hsl(209, 61%, 16%);
+}
+.question-button {
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: transparent;
+    border-color: transparent;
+    cursor: pointer;
+    color: #c59d5f;
+    transition: all 0.3s linear;
+}
+.question-button::after{
+    content: '\002B';
+}
+
+.question-button.active::after{
+    content: "\2212";
+}
+
+.question-button:hover {
+    transform: rotate(90deg);
+}
+.question-text {
+    padding: 1rem 0 1.5rem 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+.question-text p {
+    margin-bottom: 0;
+    color: #222;
+}
+
+/* hide text */
+.question-text {
+    display: none;
+}
+.show-text .question-text {
+    display: block;
+}
+.show-text .question-button::after{
+    content: "\2212";
 }
