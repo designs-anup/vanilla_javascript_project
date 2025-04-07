@@ -87,20 +87,22 @@ const menuContainer = document.querySelector('.section-center')
 
 window.addEventListener('DOMContentLoaded', function(){
   
-  const getMenu = menu.map(function(item){
-                    return `<article class="menu-item">
-                            <img src="../../img/${item.img}" alt=${item.category} class="photo" />
-                            <div class="item-info">
-                                <header>
-                                <h4>${item.title}</h4>
-                                <h4 class="price">${item.price}</h4>
-                                </header>
-                                <p class="item-text">
-                                  ${item.desc}
-                                </p>
-                            </div>
-                            </article>`
-                  }).join('')
+  const getMenu = menu.map(menuItem).join('')
 
   menuContainer.innerHTML = getMenu                
 })
+
+function menuItem(item){
+  return `<article class="menu-item">
+            <img src="../../img/${item.img}" alt=${item.category} class="photo" />
+            <div class="item-info">
+                <header>
+                <h4>${item.title}</h4>
+                <h4 class="price">${item.price}</h4>
+                </header>
+                <p class="item-text">
+                  ${item.desc}
+                </p>
+            </div>
+            </article>`
+}
