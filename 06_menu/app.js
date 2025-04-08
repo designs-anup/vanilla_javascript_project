@@ -106,3 +106,36 @@ function menuItem(item){
             </div>
             </article>`
 }
+
+const categoryList = menu.map(function(cat){
+  return cat.category
+})
+console.log("category List : ",categoryList);
+
+// Method 1: Using Set and Spread Operator
+/*
+const filterCategory = [...new Set(categoryList)]
+console.log("filter out uinque category using Method 1 : ", filterCategory);
+*/
+
+// Method 2: Using Array.filter() Method
+/*
+const filterCategory = categoryList.filter(function(value, index, self){
+  // console.log(`value : ${value} , index : ${index} , self : ${self}`);
+  return self.indexOf(value) === index
+})
+console.log("filter out uinque category using Method 2 : ", filterCategory);
+*/
+
+// Method 3: Using Reduce and Includes
+const filterCategory = categoryList.reduce(function(accumulator, currentvalue){
+  return accumulator.includes(currentvalue) ? accumulator : [...accumulator, currentvalue]
+},[])
+console.log("filter out uinque category using Method 3 : ", filterCategory);
+
+
+const lunchMenu = menu.filter(function(item){
+  return item.category === 'lunch'
+})
+
+console.log("filter out lunch list : ",lunchMenu);
