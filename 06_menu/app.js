@@ -87,13 +87,8 @@ const menuContainer = document.querySelector('.section-center')
 const btnContainer = document.querySelector('.btn-container')
 
 window.addEventListener('DOMContentLoaded', function(){
-  const getMenu = menu.map(menuItem).join('')
-  menuContainer.innerHTML = getMenu      
-  
-  const btns = filterCategory.map(function(btn){
-      return `<button type="button" class="filter-btn" data-id=${btn}>${btn}</button>`
-  }).join('')
-  btnContainer.innerHTML = btns
+    const getMenu = menu.map(menuItem).join('')
+    menuContainer.innerHTML = getMenu      
 })
 
 function menuItem(item){
@@ -114,7 +109,7 @@ function menuItem(item){
 const categoryList = menu.map(function(cat){
   return cat.category
 })
-console.log("category List : ",categoryList);
+// console.log("category List : ",categoryList);
 
 // Method 1: Using Set and Spread Operator
 /*
@@ -135,11 +130,44 @@ console.log("filter out uinque category using Method 2 : ", filterCategory);
 const filterCategory = categoryList.reduce(function(accumulator, currentvalue){
   return accumulator.includes(currentvalue) ? accumulator : [...accumulator, currentvalue]
 },['all'])
-console.log("filter out uinque category using Method 3 : ", filterCategory);
+// console.log("filter out uinque category using Method 3 : ", filterCategory);
 
 /*
+// check the filter to list out lunch catergory
 const lunchMenu = menu.filter(function(item){
   return item.category === 'lunch'
 })
 console.log("filter out lunch list : ",lunchMenu);
 */
+
+const btns = filterCategory.map(function(btn){
+  return `<button type="button" class="filter-btn" data-id=${btn}>${btn}</button>`
+}).join('')
+btnContainer.innerHTML = btns
+
+const btnEvent = document.querySelectorAll('.filter-btn')
+// console.log("get all btns : ",btnEvent);
+
+btnEvent.forEach(function(item){
+  item.addEventListener('click', function(e){
+      // console.log(e.currentTarget.dataset.id);
+
+      const categorybtn = e.currentTarget.dataset.id
+      const categoryMenu = menu.filter(function(item){
+        return item.category === categorybtn
+      })
+
+      // console.log("filter out category Menu :", categoryMenu);
+
+      if(categorybtn === "all"){
+        // console.log("Show all menu List");
+        const getMenu = menu.map(menuItem).join('')
+        menuContainer.innerHTML = getMenu
+      }else{
+        // console.log("the filter a=category is : ", categoryMenu);
+        const filterMenuList = categoryMenu.map(menuItem).join('')
+        menuContainer.innerHTML = filterMenuList
+      }
+      
+  })
+})
