@@ -84,12 +84,16 @@ const menu = [
 // console.log("menu list");
 
 const menuContainer = document.querySelector('.section-center')
+const btnContainer = document.querySelector('.btn-container')
 
 window.addEventListener('DOMContentLoaded', function(){
-  
   const getMenu = menu.map(menuItem).join('')
-
-  menuContainer.innerHTML = getMenu                
+  menuContainer.innerHTML = getMenu      
+  
+  const btns = filterCategory.map(function(btn){
+      return `<button type="button" class="filter-btn" data-id=${btn}>${btn}</button>`
+  }).join('')
+  btnContainer.innerHTML = btns
 })
 
 function menuItem(item){
@@ -130,12 +134,12 @@ console.log("filter out uinque category using Method 2 : ", filterCategory);
 // Method 3: Using Reduce and Includes
 const filterCategory = categoryList.reduce(function(accumulator, currentvalue){
   return accumulator.includes(currentvalue) ? accumulator : [...accumulator, currentvalue]
-},[])
+},['all'])
 console.log("filter out uinque category using Method 3 : ", filterCategory);
 
-
+/*
 const lunchMenu = menu.filter(function(item){
   return item.category === 'lunch'
 })
-
 console.log("filter out lunch list : ",lunchMenu);
+*/
