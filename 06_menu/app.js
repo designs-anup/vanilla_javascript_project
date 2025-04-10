@@ -79,6 +79,54 @@ const menu = [
     img: "menu-10.jpg",
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
+  {
+    id: 11,
+    title: "idli",
+    category: "snack",
+    price: 9.99,
+    img: "menu-11.jpg",
+    desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
+  },
+  {
+    id: 12,
+    title: "hyderabadi biryani ",
+    category: "dinner",
+    price: 22.99,
+    img: "menu-12.jpg",
+    desc: `hyderabadi chicken biryani consist of masala rice & chicen.`,
+  },
+  {
+    id: 13,
+    title: "veg sizzler",
+    category: "lunch",
+    price: 22.99,
+    img: "menu-13.jpg",
+    desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
+  },
+  {
+    id: 14,
+    title: "pizza",
+    category: "snack",
+    price: 22.99,
+    img: "menu-14.jpg",
+    desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
+  },
+  {
+    id: 15,
+    title: "paneer masala",
+    category: "lunch",
+    price: 22.99,
+    img: "menu-15.jpg",
+    desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
+  },
+  {
+    id: 16,
+    title: "jeera rice dal fry",
+    category: "dinner",
+    price: 19.99,
+    img: "menu-16.jpg",
+    desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
+  },
 ];
 
 // console.log("menu list");
@@ -87,11 +135,15 @@ const menuContainer = document.querySelector('.section-center')
 const btnContainer = document.querySelector('.btn-container')
 
 window.addEventListener('DOMContentLoaded', function(){
-    const getMenu = menu.map(menuItem).join('')
-    menuContainer.innerHTML = getMenu      
+  displayMenuItems(menu)
 })
 
-function menuItem(item){
+function displayMenuItems(menuItems){
+    const getMenu = menuItems.map(createMenuItem).join('')
+    menuContainer.innerHTML = getMenu
+}
+
+function createMenuItem(item){
   return `<article class="menu-item">
             <img src="../../img/${item.img}" alt=${item.category} class="photo" />
             <div class="item-info">
@@ -161,12 +213,17 @@ btnEvent.forEach(function(item){
 
       if(categorybtn === "all"){
         // console.log("Show all menu List");
-        const getMenu = menu.map(menuItem).join('')
-        menuContainer.innerHTML = getMenu
+        // const getMenu = menu.map(menuItem).join('')
+        // menuContainer.innerHTML = getMenu
+
+        displayMenuItems(menu)
+
       }else{
         // console.log("the filter a=category is : ", categoryMenu);
-        const filterMenuList = categoryMenu.map(menuItem).join('')
-        menuContainer.innerHTML = filterMenuList
+        // const filterMenuList = categoryMenu.map(menuItem).join('')
+        // menuContainer.innerHTML = filterMenuList
+
+        displayMenuItems(categoryMenu)
       }
       
   })
