@@ -5,14 +5,14 @@ const btn = document.getElementById('btn')
 const btnHex = document.getElementById('btnHex')
 const color = document.querySelector('.colorPan')
 
-btn.addEventListener('click', function(){
+flipBackgroundImg = function(){
     let randomBg = pickRandomBg(animal)
 
     color.textContent = animal[randomBg]
     document.body.style.background = "url(../../img/"+animal[randomBg]+".jpg)"
-})
+}
 
-btnHex.addEventListener('click', function(){
+flipBackgroundColor = function(){
     let hex = "#"
     
     for(let i = 0; i < 6; i++){
@@ -23,8 +23,13 @@ btnHex.addEventListener('click', function(){
     // console.log("hex : ", hex);
     color.textContent = hex
     document.body.style.background = hex
-})
+}
 
 function pickRandomBg(item){
     return Math.floor(Math.random() * item.length)
 }
+
+
+
+btn.addEventListener('click', flipBackgroundImg)
+btnHex.addEventListener('click', flipBackgroundColor)
