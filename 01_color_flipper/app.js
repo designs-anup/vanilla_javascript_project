@@ -38,7 +38,10 @@ function pickRandomBg(item){
 let intervalId
 
 startChangeBackground = function(){
-    intervalId = setInterval(changeBGColor, 1000)
+    if(!intervalId){
+        intervalId = setInterval(changeBGColor, 1000)
+    }
+    
     function changeBGColor(){
         document.body.style.background = flipBackgroundColor()
     }
@@ -46,6 +49,7 @@ startChangeBackground = function(){
 
 stopChangeBackground = function(){
     clearInterval(intervalId)
+    intervalId = null
 }
 
 btn.addEventListener('click', flipBackgroundImg)
